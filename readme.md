@@ -1,23 +1,11 @@
 # URL Safe Base64
 
-URL Safe Base64 util module for Node.js applications
-
-[![Build Status](https://secure.travis-ci.org/RGBboy/urlsafe-base64.png)](http://travis-ci.org/RGBboy/urlsafe-base64)
-
-## Installation
-
-With [npm](http://npmjs.org) do:
-
-```
-npm install urlsafe-base64
-```
+URL Safe Base64 util module for Deno applications
 
 ## Usage
 
-Require it within your module:
-
-``` javascript
-  var URLSafeBase64 = require('urlsafe-base64');
+```js
+import URLSafeBase64 from "https://code4fukui.github.io/urlsafe-base64/index.js";
 ```
 
 ### .encode(buffer)
@@ -27,22 +15,22 @@ the RFC 4648 Spec where '+' is encoded as '-' and '/' is encoded as '_'.
 The padding character '=' is removed.
 
 ``` javascript
-  var randomURLSafeBase64;
-  crypto.randomBytes(32, function(err, buf) {
-    if (err) {
-      throw err;
-      return;
-    };
-    randomURLSafeBase64 = URLSafeBase64.encode(buf);
-  });
+let randomURLSafeBase64;
+crypto.randomBytes(32, function(err, buf) {
+  if (err) {
+    throw err;
+    return;
+  };
+  randomURLSafeBase64 = URLSafeBase64.encode(buf);
+});
 ```
 
 ### .decode(string)
 
 Decodes a URL Safe Base64 string as a buffer.
 
-``` javascript
-var someURLSafeBase64 = '';
+``` js
+const someURLSafeBase64 = '';
 URLSafeBase64.decode(someURLSafeBase64); // returns a buffer
 ```
 
@@ -50,12 +38,12 @@ URLSafeBase64.decode(someURLSafeBase64); // returns a buffer
 
 Validates a string if it is URL Safe Base64 encoded.
 
-``` javascript
-  var validURLSafeBase64 = '';
-  URLSafeBase64.validate(validURLSafeBase64); // returns true
+```js
+const validURLSafeBase64 = '';
+URLSafeBase64.validate(validURLSafeBase64); // returns true
 
-  var invalidURLSafeBase64 = '/+=='
-  URLSafeBase64.validate(invalidURLSafeBase64); // returns false
+const invalidURLSafeBase64 = '/+=='
+URLSafeBase64.validate(invalidURLSafeBase64); // returns false
 ```
 
 ## License 
